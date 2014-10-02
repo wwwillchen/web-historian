@@ -1,5 +1,6 @@
 var path = require('path');
 var fs = require('fs');
+
 var archive = require('../helpers/archive-helpers');
 
 exports.headers = headers = {
@@ -13,6 +14,7 @@ exports.headers = headers = {
 exports.serveAssets = function(response, asset, callback) {
   fs.readFile(asset, {'encoding': 'UTF-8'}, function(error, data){
     response.writeHead(200, headers);
+    console.log(response);
     response.write(data);
     response.end();
     if (callback){
