@@ -13,7 +13,6 @@ exports.headers = headers = {
 exports.serveAssets = function(response, asset, callback) {
   fs.readFile(asset, {'encoding': 'UTF-8'}, function(error, data){
     response.writeHead(200, headers);
-    console.log('type of', typeof data, 'data:', data);
     response.write(data);
     response.end();
     if (callback){
@@ -28,11 +27,3 @@ exports.serveAssets = function(response, asset, callback) {
 // As you progress, keep thinking about what helper functions you can put here!
 
 
-// var file = '';
-    // request.on('data', function(chunk){
-    //   file += chunk;
-    // });
-    // request.on('end', funtion(){
-    //   response.writeHead(200, );
-    //   response.end();
-    // });
