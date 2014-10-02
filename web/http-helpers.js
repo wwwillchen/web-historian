@@ -10,11 +10,29 @@ exports.headers = headers = {
   'Content-Type': "text/html"
 };
 
-exports.serveAssets = function(res, asset, callback) {
-  // Write some code here that helps serve up your static files!
-  // (Static files are things like html (yours or archived from others...), css, or anything that doesn't change often.)
+exports.serveAssets = function(response, asset, callback) {
+  fs.readFile(asset, {'encoding': 'UTF-8'}, function(error, data){
+    response.writeHead(200, headers);
+    console.log('type of', typeof data, 'data:', data);
+    response.write(data);
+    response.end();
+    if (callback){
+      callback();
+    }
+  });
+
 };
 
 
 
 // As you progress, keep thinking about what helper functions you can put here!
+
+
+// var file = '';
+    // request.on('data', function(chunk){
+    //   file += chunk;
+    // });
+    // request.on('end', funtion(){
+    //   response.writeHead(200, );
+    //   response.end();
+    // });

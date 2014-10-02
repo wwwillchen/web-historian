@@ -1,13 +1,14 @@
+var httpHelpers = require('./http-helpers');
 var url = require('url');
 var path = require('path');
+var fs = require('fs');
 var archive = require('../helpers/archive-helpers');
 // require more modules/folders here!
 
 var routes = {
   '/': {
     'GET': function(request, response){
-      response.end('GET received');
-      // Serve the index.html
+      httpHelpers.serveAssets(response, './public/index.html');
     }
   },
   '/submit': {
